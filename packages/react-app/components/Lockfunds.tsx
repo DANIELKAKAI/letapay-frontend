@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { createPublicClient, createWalletClient, custom, http } from "viem";
 import { celoAlfajores } from "viem/chains";
+import { v4 as uuidv4 } from "uuid";
 import { useAccount } from "wagmi";
 import { letapayContractAddress, cUsdToWei, cUsdAddress } from "../utils/utils";
 const LetapayABIJson = require("../../../../hardhat/artifacts/contracts/LetapayV2.sol/LetapayV2.json");
 const ERC20ABIJson = require("../../../../hardhat/utils/erc20.abi.json");
 
-function Payments({ postPayment, payments, setPayments, userAddress }) {
-  const [recieverAddressInput, setRecieverAddressInput] = useState("");
+function Lockfunds({ postPayment, payments, setPayments, userAddress }) {
   const [amountInput, setAmountInput] = useState("");
   const [dateInput, setDateInput] = useState("");
   const [timeInput, setTimeInput] = useState("");
@@ -22,13 +22,14 @@ function Payments({ postPayment, payments, setPayments, userAddress }) {
   });
 
   const handleAddClick = async () => {
-    if (recieverAddressInput && dateInput && timeInput && amountInput) {
+    if (dateInput && timeInput && amountInput) {
       if (typeof window.ethereum !== "undefined") {
         const paymentId = await postPayment(
-          recieverAddressInput,
+          userAddress,
           dateInput,
           timeInput,
-          amountInput
+          amountInput,
+          "LOCKED"
         );
 
         const approveTx = await walletClient.writeContract({
@@ -50,7 +51,7 @@ function Payments({ postPayment, payments, setPayments, userAddress }) {
           abi: LetapayABIJson.abi,
           functionName: "addPayment",
           account: userAddress,
-          args: [paymentId, recieverAddressInput, cUsdToWei(amountInput)],
+          args: [paymentId, userAddress, cUsdToWei(amountInput)],
         });
 
         let receipt = await publicClient.waitForTransactionReceipt({
@@ -61,14 +62,13 @@ function Payments({ postPayment, payments, setPayments, userAddress }) {
 
         alert(`${paymentId} added`);
 
-        setRecieverAddressInput("");
         setDateInput("");
         setTimeInput("");
         setAmountInput("");
 
         setPayments([
           {
-            receiver_address: recieverAddressInput,
+            receiver_address: userAddress,
             payment_datetime: `${dateInput}T${timeInput}`,
             amount: amountInput,
             status: "INPROGRESS",
@@ -84,15 +84,6 @@ function Payments({ postPayment, payments, setPayments, userAddress }) {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Letapay</h1>
-        <div>
-          <input
-            type="text"
-            value={recieverAddressInput}
-            onChange={(e) => setRecieverAddressInput(e.target.value)}
-            placeholder="Enter address"
-          />
-        </div>
         <div>
           <input
             type="number"
@@ -116,23 +107,21 @@ function Payments({ postPayment, payments, setPayments, userAddress }) {
           />
         </div>
         <button className="add-button" onClick={handleAddClick}>
-          Add
+          Lock
         </button>
         <table>
           <thead>
             <tr>
-              <th>Reciever Address</th>
               <th>Amount</th>
-              <th>Payment Date Time</th>
+              <th>Release Date Time</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
             {payments.map((payment, index) => {
-              if (payment.payment_type === "SCHEDULED") {
+              if (payment.payment_type === "LOCKED") {
                 return (
                   <tr key={index}>
-                    <td>{payment.receiver_address}</td>
                     <td>{payment.amount}</td>
                     <td>{payment.payment_datetime}</td>
                     <td>{payment.status}</td>
@@ -148,4 +137,4 @@ function Payments({ postPayment, payments, setPayments, userAddress }) {
   );
 }
 
-export default Payments;
+export default Lockfunds;
