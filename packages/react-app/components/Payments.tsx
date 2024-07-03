@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { createPublicClient, createWalletClient, custom, http } from "viem";
 import { celoAlfajores } from "viem/chains";
-import { useAccount } from "wagmi";
 import { letapayContractAddress, cUsdToWei, cUsdAddress } from "../utils/utils";
 const LetapayABIJson = require("../../../../hardhat/artifacts/contracts/LetapayV2.sol/LetapayV2.json");
 const ERC20ABIJson = require("../../../../hardhat/utils/erc20.abi.json");
@@ -139,7 +138,7 @@ function Payments({ postPayment, payments, setPayments, userAddress }) {
                   </tr>
                 );
               }
-              return null; // Ensure to return something (even null) if the condition isn't met
+              return null;
             })}
           </tbody>
         </table>
