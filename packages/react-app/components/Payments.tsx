@@ -3,6 +3,7 @@ import { createPublicClient, createWalletClient, custom, http } from "viem";
 import { celoAlfajores } from "viem/chains";
 import { useAccount } from "wagmi";
 import { letapayContractAddress, cUsdToWei, cUsdAddress } from "../utils/utils";
+import PaymentTableContainer from "./common/PaymentsTable/Payments";
 const LetapayABIJson = require("../../../../hardhat/artifacts/contracts/LetapayV2.sol/LetapayV2.json");
 const ERC20ABIJson = require("../../../../hardhat/utils/erc20.abi.json");
 
@@ -118,7 +119,8 @@ function Payments({ postPayment, payments, setPayments, userAddress }) {
         <button className="add-button" onClick={handleAddClick}>
           Add
         </button>
-        <table>
+        <div className="w-full overflow-x-scroll">
+        <table className="">
           <thead>
             <tr>
               <th>Reciever Address</th>
@@ -143,7 +145,9 @@ function Payments({ postPayment, payments, setPayments, userAddress }) {
             })}
           </tbody>
         </table>
+        </div>
       </header>
+      {/* <PaymentTableContainer paymentSource={payments} /> */}
     </div>
   );
 }
