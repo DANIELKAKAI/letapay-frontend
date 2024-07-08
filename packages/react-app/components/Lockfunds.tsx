@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { createPublicClient, createWalletClient, custom, http } from "viem";
 import { celoAlfajores } from "viem/chains";
-import { v4 as uuidv4 } from "uuid";
-import { useAccount } from "wagmi";
 import { letapayContractAddress, cUsdToWei, cUsdAddress } from "../utils/utils";
 import LockFundsTableContainer from "./common/LockFundsTable/LockFunds";
 import { Input } from "./ui/input";

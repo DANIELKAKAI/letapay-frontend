@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { createPublicClient, createWalletClient, custom, http } from "viem";
 import { celoAlfajores } from "viem/chains";
-import { useAccount } from "wagmi";
 import { letapayContractAddress, cUsdToWei, cUsdAddress } from "../utils/utils";
 import PaymentTableContainer from "./common/PaymentsTable/Payments";
 import { paymentSource } from "@/helpers/paymentSource";

@@ -9,6 +9,11 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@celo/contractkit": "^8.0.0",
+        "@celo/identity": "^5.1.2",
+        "@celo/react-celo": "^5.0.4",
+        "@celo/utils": "^6.0.1",
+        "@celo/wallet-base": "^5.2.0",
         "@headlessui/react": "^1.7.14",
         "@heroicons/react": "^2.0.18",
         "@radix-ui/react-dropdown-menu": "^2.1.1",
@@ -30,7 +35,8 @@
         "tailwindcss-animate": "^1.0.7",
         "uuid": "^10.0.0",
         "viem": "2.8.18",
-        "wagmi": "2.5.12"
+        "wagmi": "2.5.12",
+        "web3": "1.10"
     },
     "devDependencies": {
         "@types/node": "^20.2.1",

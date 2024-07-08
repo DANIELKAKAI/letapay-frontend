@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-const url = "https://a0d2-102-217-172-2.ngrok-free.app";
+const url = "http://127.0.0.1:8000";
 
 export default function Home() {
   const [userAddress, setUserAddress] = useState("");
