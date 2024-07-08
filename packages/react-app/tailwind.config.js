@@ -17,6 +17,10 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        DM: ["DM Sans", "sans-serif"],
+      },
       colors: {
          /** primary */
          "prosperity": "#FCFF52",

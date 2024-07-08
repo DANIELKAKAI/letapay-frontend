@@ -58,7 +58,7 @@ export function DataTable<TData, TValue>({
     for (let i = 0; i < table!.getPageCount(); i++) {
       paginationButtons.push(
         <Button
-          className={`ml-1 ${i === pageIndex ? "bg-gradient-light-blue text-white" : ""}`}
+          className={`ml-1 ${i === pageIndex ? "bg-gradient-light-blue text-black" : ""}`}
           variant="outline"
           size="sm"
           key={i}
@@ -166,7 +166,7 @@ export function DataTable<TData, TValue>({
         <div className="flex justify-between items-center mx-4">
           <div className="flex-1 text-sm text-muted-foreground">
             Showing {table!.getPageCount()} pages with{" "}
-            {table.getFilteredRowModel().rows.length} pens.
+            {table.getFilteredRowModel().rows.length} transactions.
           </div>
           <div className="flex items-center justify-end space-x-2 py-4">
             <Button
