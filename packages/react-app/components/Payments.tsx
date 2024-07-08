@@ -3,7 +3,6 @@ import { createPublicClient, createWalletClient, custom, http } from "viem";
 import { celoAlfajores } from "viem/chains";
 import { letapayContractAddress, cUsdToWei, cUsdAddress } from "../utils/utils";
 import PaymentTableContainer from "./common/PaymentsTable/Payments";
-import { paymentSource } from "@/helpers/paymentSource";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 const LetapayABIJson = require("../../../../hardhat/artifacts/contracts/LetapayV2.sol/LetapayV2.json");
@@ -150,7 +149,7 @@ function Payments({ postPayment, payments, setPayments, userAddress }) {
             </tbody>
           </table>
         </div> */}
-      <PaymentTableContainer />
+      <PaymentTableContainer payments={payments} />
     </article>
   );
 }

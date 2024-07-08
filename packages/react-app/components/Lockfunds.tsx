@@ -76,6 +76,8 @@ function Lockfunds({ postPayment, payments, setPayments, userAddress }) {
           },
           ...payments,
         ]);
+
+        console.log(payments);
       } else {
         console.error("MetaMask is not installed");
       }
@@ -132,7 +134,7 @@ function Lockfunds({ postPayment, payments, setPayments, userAddress }) {
             </tbody>
           </table>
         </div> */}
-        <LockFundsTableContainer />
+        <LockFundsTableContainer payments={payments} />
       </article>
   );
 }

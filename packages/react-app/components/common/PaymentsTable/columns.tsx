@@ -14,15 +14,6 @@ export const PaymentColumns: ColumnDef<PaymentType>[] = [
     ),
   },
   {
-    accessorKey: "sender_address",
-    header: ({ column }) => (
-      <DataTableColumnHeader
-        column={column}
-        title="Sender Address"
-      />
-    ),
-  },
-  {
     accessorKey: "receiver_address",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Receiver Address" />
@@ -47,12 +38,6 @@ export const PaymentColumns: ColumnDef<PaymentType>[] = [
     accessorKey: "status",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Status" />
-    ),
-  },
-  {
-    accessorKey: "payment_type",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Payment Type" />
     ),
   },
 ];
