@@ -22,7 +22,7 @@ export const PaymentColumns: ColumnDef<PaymentType>[] = [
   {
     accessorKey: "amount",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Amount" />
+      <DataTableColumnHeader column={column} title="Amount in cUsd" />
     ),
   },
   {

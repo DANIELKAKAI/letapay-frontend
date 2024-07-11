@@ -95,8 +95,8 @@ export default function Home() {
         <div className="">
           <Tabs defaultValue="payments" className="">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="payments">Payments</TabsTrigger>
-              <TabsTrigger value="lockfunds">Lockfunds</TabsTrigger>
+              <TabsTrigger value="payments">Schedule Payments</TabsTrigger>
+              <TabsTrigger value="lockfunds">Lock Funds</TabsTrigger>
             </TabsList>
             <TabsContent value="payments">
               <Payments

@@ -90,7 +90,7 @@ function Lockfunds({ postPayment, payments, setPayments, userAddress }) {
           type="number"
           value={amountInput}
           onChange={(e) => setAmountInput(e.target.value)}
-          placeholder="Enter amount"
+          placeholder="Enter amount in cUsd"
           className="my-1"
         />
         <Input
